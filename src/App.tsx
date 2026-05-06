@@ -7,7 +7,6 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import AutomationRequestForm from './components/AutomationRequestForm';
 import Footer from './components/Footer';
-import FloatingCTA from './components/FloatingCTA';
 
 export default function App() {
   return (
@@ -23,7 +22,6 @@ export default function App() {
         <AutomationRequestForm />
       </main>
       <Footer />
-<FloatingCTA />
     </div>
   );
 }

@@ -1,64 +1,100 @@
 import { ArrowDown, ClipboardList } from "lucide-react";
+import { FaAws, FaDocker, FaSalesforce } from "react-icons/fa";
+import {
+  SiNginx,
+  SiFastapi,
+  SiN8N,
+  SiZapier,
+  SiMake,
+  SiUipath,
+  SiOpenai,
+  SiAnthropic,
+  SiOllama,
+  SiHubspot,
+  SiAirtable,
+  SiNotion,
+  SiGrafana,
+  SiPrometheus,
+  SiSentry,
+} from "react-icons/si";
+
+const voiceflowLogo = "https://placehold.co/40x40/2563eb/ffffff?text=V";
+const antigravityLogo = "https://placehold.co/40x40/2563eb/ffffff?text=A";
 
 const toolGroups = [
   {
     label: "Platform",
     tools: [
-      { name: "AWS", logo: "https://cdn.simpleicons.org/amazonwebservices/2563eb" },
-      { name: "Docker", logo: "https://cdn.simpleicons.org/docker/2563eb" },
-      { name: "Nginx", logo: "https://cdn.simpleicons.org/nginx/2563eb" },
-      { name: "FastAPI", logo: "https://cdn.simpleicons.org/fastapi/2563eb" },
+      { name: "AWS", icon: <FaAws /> },
+      { name: "Docker", icon: <FaDocker /> },
+      { name: "Nginx", icon: <SiNginx /> },
+      { name: "FastAPI", icon: <SiFastapi /> },
     ],
   },
   {
     label: "Automation",
     tools: [
-      { name: "n8n", logo: "https://cdn.simpleicons.org/n8n/2563eb" },
-      { name: "Zapier", logo: "https://cdn.simpleicons.org/zapier/2563eb" },
-      { name: "Make", logo: "https://cdn.simpleicons.org/make/2563eb" },
-      { name: 'UiPath', logo: 'https://cdn.simpleicons.org/uipath/2563eb' },
+      { name: "n8n", icon: <SiN8N /> },
+      { name: "Zapier", icon: <SiZapier /> },
+      { name: "Make", icon: <SiMake /> },
+      { name: "UiPath", icon: <SiUipath /> },
+      {
+        name: "Voiceflow",
+        icon: <img src={voiceflowLogo} alt="Voiceflow" className="h-5 w-5 rounded" />,
+      },
     ],
   },
   {
     label: "AI Systems",
     tools: [
-      { name: "OpenAI", logo: "https://cdn.simpleicons.org/openai/2563eb" },
-      { name: "Claude", logo: "https://cdn.simpleicons.org/anthropic/2563eb" },
-      { name: "Ollama", logo: "https://cdn.simpleicons.org/ollama/2563eb" },
-      { name: "Voiceflow", logo: "https://cdn.simpleicons.org/voiceflow/2563eb" },
+      { name: "OpenAI", icon: <SiOpenai /> },
+      { name: "Claude", icon: <SiAnthropic /> },
+      { name: "Ollama", icon: <SiOllama /> },
+      {
+        name: "Antigravity",
+        icon: (
+          <img
+            src={antigravityLogo}
+            alt="Antigravity"
+            className="h-5 w-5 rounded"
+          />
+        ),
+      },
     ],
   },
   {
-    label: "CRM",
+    label: "CRM & Workspace",
     tools: [
-      { name: "Salesforce", logo: "https://cdn.simpleicons.org/salesforce/2563eb" },
-      { name: "HubSpot", logo: "https://cdn.simpleicons.org/hubspot/2563eb" },
-      { name: "Airtable", logo: "https://cdn.simpleicons.org/airtable/2563eb" },
-      { name: "Notion", logo: "https://cdn.simpleicons.org/notion/2563eb" },
+      { name: "Salesforce", icon: <FaSalesforce /> },
+      { name: "HubSpot", icon: <SiHubspot /> },
+      { name: "Airtable", icon: <SiAirtable /> },
+      { name: "Notion", icon: <SiNotion /> },
     ],
   },
   {
     label: "Observability",
     tools: [
-      { name: "Grafana", logo: "https://cdn.simpleicons.org/grafana/2563eb" },
-      { name: "Prometheus", logo: "https://cdn.simpleicons.org/prometheus/2563eb" },
-      { name: "AWS CloudWatch", logo: "https://cdn.simpleicons.org/amazoncloudwatch/2563eb" },
-      { name: "Sentry", logo: "https://cdn.simpleicons.org/sentry/2563eb" },
+      { name: "Grafana", icon: <SiGrafana /> },
+      { name: "Prometheus", icon: <SiPrometheus /> },
+      { name: "AWS CloudWatch", icon: <FaAws /> },
+      { name: "Sentry", icon: <SiSentry /> },
     ],
   },
 ];
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-sky-100">
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-sky-100"
+    >
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-[-120px] left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-[140px]" />
         <div className="absolute bottom-[-100px] right-[-80px] h-[500px] w-[500px] rounded-full bg-sky-400/20 blur-[120px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8">
-        <div className="mb-4 text-sm font-semibold text-blue-600 tracking-widest">
+        <div className="mb-4 text-sm font-semibold tracking-widest text-blue-600">
           PlatformOps Dashboard
         </div>
 
@@ -76,8 +112,8 @@ export default function Hero() {
         </p>
 
         <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-          I help businesses eliminate manual work, automate operations, and build scalable systems
-          that save time, reduce errors, and increase efficiency.
+          I help businesses eliminate manual work, automate operations, and build
+          scalable systems that save time, reduce errors, and increase efficiency.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -100,7 +136,8 @@ export default function Hero() {
 
         <div className="mt-14 w-full max-w-6xl">
           <p className="mb-5 text-sm font-semibold text-gray-500">
-            Platform · Automation · AI-Driven Systems · CRM · Observability
+            Platform · Automation · AI-Driven Systems · CRM & Workspace ·
+            Observability
           </p>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -120,7 +157,9 @@ export default function Hero() {
                       title={tool.name}
                       className="flex items-center gap-2 rounded-xl border border-blue-100 bg-white px-3 py-2 text-sm font-semibold text-gray-600 shadow-sm transition-all duration-300 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
                     >
-                      <img src={tool.logo} alt={tool.name} className="h-5 w-5" />
+                      <span className="flex h-5 w-5 items-center justify-center text-blue-600">
+                        {tool.icon}
+                      </span>
                       <span>{tool.name}</span>
                     </div>
                   ))}
