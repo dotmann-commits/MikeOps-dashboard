@@ -1,4 +1,4 @@
-// ─── Mock data for PlatformOps Dashboard ───────────────────────────────────
+// ─── Mock data for MikeOps Dashboard ───────────────────────────────────
 
 export const skillGroups = [
   {

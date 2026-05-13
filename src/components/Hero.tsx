@@ -95,7 +95,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8">
         <div className="mb-4 text-sm font-semibold tracking-widest text-blue-600">
-          PlatformOps Dashboard
+          MikeOps Dashboard
         </div>
 
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/80 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">

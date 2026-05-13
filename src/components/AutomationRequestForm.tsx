@@ -1,4 +1,6 @@
-import { useState, FormEvent } from 'react';
+/// <reference types="vite/client" />
+
+import { useState, type FormEvent, type ChangeEvent, type ReactNode } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { automationTypes, priorityLevels } from '../data/mockData';
 
@@ -36,7 +38,7 @@ export default function AutomationRequestForm() {
   const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -47,7 +49,7 @@ export default function AutomationRequestForm() {
     // ── n8n webhook URL is read from the environment variable VITE_N8N_WEBHOOK_URL.
     //    In your .env file add:  VITE_N8N_WEBHOOK_URL=https://your-n8n-instance/webhook/xyz
     //    n8n will receive a JSON POST with all form fields shown in the payload below.
-    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL as string | undefined;
+    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
 
     if (!webhookUrl) {
       // Friendly message when no webhook has been configured yet
@@ -69,7 +71,7 @@ export default function AutomationRequestForm() {
       priority: fields.priority,
       message: fields.message,
       submittedAt: new Date().toISOString(),
-      source: 'PlatformOps Dashboard',
+      source: "MikeOps Dashboard",
     };
     // ────────────────────────────────────────────────────────────────────────
 
@@ -315,7 +317,7 @@ function Field({
 }: {
   label: string;
   required?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div>

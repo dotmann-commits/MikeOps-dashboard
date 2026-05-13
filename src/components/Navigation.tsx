@@ -27,7 +27,12 @@ export default function Navigation() {
             className="flex items-center gap-2 text-gray-900 font-semibold text-lg"
           >
             <Layers size={22} className="text-blue-600" />
-            <span>PlatformOps</span>
+            <div className="flex flex-col leading-tight">
+  <span className="text-gray-900 font-bold">MikeOps</span>
+  <span className="text-[10px] text-gray-500 font-medium">
+    by Michael Awude
+  </span>
+</div>
           </a>
 
           {/* Desktop links */}
