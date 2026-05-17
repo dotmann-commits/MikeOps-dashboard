@@ -1,97 +1,57 @@
-import { useState } from "react";
-import { Menu, X, Layers } from "lucide-react";
-
-const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Metrics", href: "#metrics" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#automation-request" },
-];
+import { useEffect } from "react";
 
 export default function Navigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+  }, []);
 
-  const closeMenu = () => setMenuOpen(false);
+  const links = [
+    { label: "Home", href: "#hero" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Services", href: "#services" },
+    { label: "Contact", href: "#automation-request" },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Brand */}
-          <a
-            href="#hero"
-            onClick={closeMenu}
-            className="flex items-center gap-2 text-gray-900 font-semibold text-lg"
-          >
-            <Layers size={22} className="text-blue-600" />
-            <div className="flex flex-col leading-tight">
-  <span className="text-gray-900 font-bold">MikeOps</span>
-  <span className="text-[10px] text-gray-500 font-medium">
-    by Michael Awude
-  </span>
-</div>
-          </a>
+    <header className="fixed top-0 z-50 w-full border-b border-blue-100/70 bg-white shadow-sm shadow-blue-900/5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a
+          href="#hero"
+          aria-label="MikeOps homepage"
+          className="group flex flex-col items-start justify-center transition-all duration-300 hover:scale-[1.025]"
+        >
+          <div className="relative h-[38px] w-[150px] overflow-hidden">
+            <img
+              src="/brand/mikeops-brand-logo.png"
+              alt="MikeOps"
+              className="absolute left-0 top-1/2 h-[58px] w-auto -translate-y-1/2 object-contain mix-blend-multiply contrast-125 saturate-125"
+            />
+          </div>
 
-          {/* Desktop links */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-100 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          <span className="-mt-1 ml-[43px] text-[10px] font-bold tracking-[0.08em] text-slate-500">
+            by Michael Awude
+          </span>
+        </a>
 
-          {/* Desktop CTA */}
-          <a
-            href="#automation-request"
-            className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Request Automation
-          </a>
-
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            className="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white px-4 pb-4 pt-2">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
             <a
-              key={link.href}
+              key={link.label}
               href={link.href}
-              onClick={closeMenu}
-              className="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
+              className="relative text-sm font-bold text-slate-700 transition-all duration-300 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-blue-600 after:transition-all after:duration-300 hover:text-blue-600 hover:after:w-full"
             >
               {link.label}
             </a>
           ))}
+        </nav>
 
-          <a
-            href="#automation-request"
-            onClick={closeMenu}
-            className="mt-2 block text-center px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Request Automation
-          </a>
-        </div>
-      )}
+        <a
+          href="#automation-request"
+          className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:shadow-cyan-400/40 active:scale-95"
+        >
+          Request Automation
+        </a>
+      </div>
     </header>
   );
 }

@@ -1,27 +1,27 @@
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import Metrics from './components/Metrics';
 import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Services from './components/Services';
 import Projects from './components/Projects';
+import Services from './components/Services';
 import AutomationRequestForm from './components/AutomationRequestForm';
 import Footer from './components/Footer';
+import CookieConsent from './components/CookieConsent';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-[#020617] text-gray-900">
       <Navigation />
-      <main>
+
+      <main className="bg-[#020617]">
         <Hero />
-        <Metrics />
         <Skills />
-        <Experience />
-        <Services />
         <Projects />
+        <Services />
         <AutomationRequestForm />
       </main>
+
       <Footer />
+      <CookieConsent />
     </div>
   );
 }
