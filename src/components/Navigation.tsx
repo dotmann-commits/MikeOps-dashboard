@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
-  useEffect(() => {
-  }, []);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
     { label: "Home", href: "#hero" },
@@ -18,6 +18,7 @@ export default function Navigation() {
         <a
           href="#hero"
           aria-label="MikeOps homepage"
+          onClick={() => setIsMenuOpen(false)}
           className="group flex flex-col items-start justify-center transition-all duration-300 hover:scale-[1.025]"
         >
           <div className="relative h-[38px] w-[150px] overflow-hidden">
@@ -45,13 +46,51 @@ export default function Navigation() {
           ))}
         </nav>
 
-        <a
-          href="#automation-request"
-          className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:shadow-cyan-400/40 active:scale-95"
-        >
-          Request Automation
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="#automation-request"
+            onClick={() => setIsMenuOpen(false)}
+            className="hidden rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:shadow-cyan-400/40 active:scale-95 sm:inline-flex"
+          >
+            Request Automation
+          </a>
+
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((current) => !current)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-white text-slate-800 shadow-sm transition-all duration-300 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 md:hidden"
+          >
+            {isMenuOpen ? <X size={24} strokeWidth={2.5} /> : <Menu size={24} strokeWidth={2.5} />}
+          </button>
+        </div>
       </div>
+
+      {isMenuOpen && (
+        <div className="border-t border-blue-100 bg-white px-4 pb-5 pt-2 shadow-lg shadow-blue-900/10 md:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-2">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-bold text-slate-700 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600"
+              >
+                {link.label}
+              </a>
+            ))}
+
+            <a
+              href="#automation-request"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-2 rounded-xl bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-500 active:scale-95"
+            >
+              Request Automation
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

@@ -47,14 +47,7 @@ export default function AutomationRequestForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
 
-    if (!webhookUrl) {
-      setStatus('no-webhook');
-      return;
-    }
-
-    
 if(fields.website){
  return;
 }
@@ -88,7 +81,7 @@ const controller=new AbortController();
 
 setTimeout(()=>controller.abort(),10000);
 
-const res = await fetch(webhookUrl, {
+const res = await fetch('/api/automation-request', {
 signal:controller.signal,
 
         method: 'POST',
@@ -180,7 +173,7 @@ signal:controller.signal,
               <Notice tone="amber" icon={<AlertCircle size={18} />}>
                 <p className="font-semibold text-sm">Backend not connected yet</p>
                 <p className="text-sm mt-0.5">
-                  No webhook URL is configured. Add <code className="px-1 py-0.5 bg-amber-100 rounded text-xs">VITE_N8N_WEBHOOK_URL</code> to your <code className="text-xs">.env</code> file.
+                  The secure backend endpoint is not configured yet. Add <code className="px-1 py-0.5 bg-amber-100 rounded text-xs">N8N_WEBHOOK_URL</code> in Vercel environment variables.
                 </p>
               </Notice>
             )}
