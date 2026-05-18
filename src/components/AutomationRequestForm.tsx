@@ -52,10 +52,13 @@ if(fields.website){
  return;
 }
 
-if(fields.message.length<10){
- setStatus('error');
- setErrorMessage('Please provide more details.');
- return;
+const challengeDetails = fields.challenge.trim();
+const additionalDetails = fields.message.trim();
+
+if (challengeDetails.length < 10 && additionalDetails.length < 10) {
+  setStatus('error');
+  setErrorMessage('Please describe the business problem or add extra details before submitting.');
+  return;
 }
 
 setStatus('loading');
