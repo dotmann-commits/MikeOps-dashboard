@@ -251,9 +251,9 @@ export default function Projects() {
               whileHover={{ y: -10, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => openProject(project)}
-              className={`group relative flex flex-col overflow-hidden rounded-3xl border text-left shadow-2xl backdrop-blur-[1px] transition-all duration-300 hover:bg-white/[0.12] hover:shadow-[0_0_55px_rgba(34,211,238,0.22)] ${projectCardThemeMap[project.tagColor]}`}
+              className={`group relative flex flex-col overflow-hidden rounded-3xl border text-left shadow-2xl backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.12] hover:shadow-[0_0_55px_rgba(34,211,238,0.22)] ${projectCardThemeMap[project.tagColor]}`}
             >
-              <div className="absolute -right-20 -top-20 h-44 w-44 rounded-full bg-white/[0.06] blur-3xl transition group-hover:bg-cyan-300/25" />
+              <div className="absolute -right-20 -top-20 h-44 w-44 rounded-full bg-white/20 blur-3xl transition group-hover:bg-cyan-300/25" />
               <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-blue-400/10 blur-3xl" />
 
               <motion.div
@@ -314,7 +314,7 @@ export default function Projects() {
                     {project.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="rounded-lg border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-medium text-slate-200"
+                        className="rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
                       >
                         {tool}
                       </span>
@@ -366,12 +366,12 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-white/[0.06] px-4 py-6 backdrop-blur-[1px]"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 px-4 py-6 backdrop-blur-sm"
         >
           <div className="relative max-h-[92vh] w-full max-w-7xl overflow-y-auto rounded-3xl border border-blue-300/20 bg-[#061225] shadow-2xl shadow-blue-950/70">
             <button
               onClick={closeProject}
-              className="absolute right-5 top-5 z-30 rounded-full bg-white/[0.06] p-2 text-slate-700 shadow-lg hover:bg-white"
+              className="absolute right-5 top-5 z-30 rounded-full bg-white/90 p-2 text-slate-700 shadow-lg hover:bg-white"
               aria-label="Close"
             >
               <X size={20} />
@@ -433,7 +433,7 @@ export default function Projects() {
 
                         <button
                           onClick={previousImage}
-                          className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/[0.06] p-3 text-white hover:bg-blue-600"
+                          className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-slate-950/70 p-3 text-white hover:bg-blue-600"
                           aria-label="Previous image"
                         >
                           <ChevronLeft size={22} />
@@ -441,7 +441,7 @@ export default function Projects() {
 
                         <button
                           onClick={nextImage}
-                          className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/[0.06] p-3 text-white hover:bg-blue-600"
+                          className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-slate-950/70 p-3 text-white hover:bg-blue-600"
                           aria-label="Next image"
                         >
                           <ChevronRight size={22} />
@@ -472,7 +472,7 @@ export default function Projects() {
                               className={`overflow-hidden rounded-xl border p-1 transition ${
                                 index === selectedImageIndex
                                   ? 'border-cyan-300 bg-cyan-300/10'
-                                  : 'border-white/10 bg-white/[0.06] hover:border-blue-300/50'
+                                  : 'border-white/10 bg-white/5 hover:border-blue-300/50'
                               }`}
                             >
                               <img
@@ -575,7 +575,7 @@ export default function Projects() {
           <div className="relative w-full max-w-7xl">
             <button
               onClick={() => setIsExpanded(false)}
-              className="absolute right-4 top-4 z-30 rounded-full bg-white/[0.06] p-2 text-slate-700 shadow-lg hover:bg-white"
+              className="absolute right-4 top-4 z-30 rounded-full bg-white/90 p-2 text-slate-700 shadow-lg hover:bg-white"
               aria-label="Close expanded view"
             >
               <X size={22} />
@@ -592,7 +592,7 @@ export default function Projects() {
 
               <button
                 onClick={previousImage}
-                className="absolute left-5 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/[0.06] p-4 text-white hover:bg-blue-600"
+                className="absolute left-5 top-1/2 z-30 -translate-y-1/2 rounded-full bg-slate-950/75 p-4 text-white hover:bg-blue-600"
                 aria-label="Previous expanded image"
               >
                 <ChevronLeft size={26} />
@@ -600,14 +600,14 @@ export default function Projects() {
 
               <button
                 onClick={nextImage}
-                className="absolute right-5 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/[0.06] p-4 text-white hover:bg-blue-600"
+                className="absolute right-5 top-1/2 z-30 -translate-y-1/2 rounded-full bg-slate-950/75 p-4 text-white hover:bg-blue-600"
                 aria-label="Next expanded image"
               >
                 <ChevronRight size={26} />
               </button>
             </div>
 
-            <div className="mt-4 flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-white backdrop-blur-[1px]">
+            <div className="mt-4 flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-white backdrop-blur-xl">
               <div>
                 <h4 className="text-lg font-bold">{selectedImage.title}</h4>
                 <p className="mt-1 text-sm text-slate-300">{selectedImage.description}</p>
@@ -651,7 +651,7 @@ function InfoRow({
 function Watermark() {
   return (
     <>
-      <div className="pointer-events-none absolute left-5 top-5 z-10 rounded-2xl border border-white/50 bg-white/[0.06] px-3 py-2 shadow-xl backdrop-blur-[1px]">
+      <div className="pointer-events-none absolute left-5 top-5 z-10 rounded-2xl border border-white/50 bg-white/85 px-3 py-2 shadow-xl backdrop-blur-md">
         <img
           src="/brand/mikeops-brand-logo.png"
           alt="MikeOps watermark"
@@ -660,7 +660,7 @@ function Watermark() {
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-        <div className="-rotate-12 rounded-3xl border border-blue-300/20 bg-white/[0.06] px-8 py-4 text-3xl font-black tracking-[0.25em] text-white/12 backdrop-blur-[1px]">
+        <div className="-rotate-12 rounded-3xl border border-blue-300/20 bg-white/10 px-8 py-4 text-3xl font-black tracking-[0.25em] text-white/12 backdrop-blur-[1px]">
           MIKEOPS.PRO
         </div>
       </div>
@@ -688,7 +688,7 @@ function MetricCard({
   return (
     <div className={`rounded-2xl border border-white/10 p-4 ${toneClass}`}>
       <div className="mb-2">{icon}</div>
-      <p className="text-xs font-bold uppercase tracking-[0.16em] opacity-[0.14]">
+      <p className="text-xs font-bold uppercase tracking-[0.16em] opacity-80">
         {label}
       </p>
       <p className="mt-1 text-sm font-bold text-white">{value}</p>

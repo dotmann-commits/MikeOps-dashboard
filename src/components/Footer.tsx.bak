@@ -180,16 +180,16 @@ export default function Footer() {
 
               <div className="mt-6 flex gap-3">
                 
-                <a href="https://www.linkedin.com/in/michael-awude-33789294" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
+                <a href="https://www.linkedin.com/in/michael-awude-33789294" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
                   <LinkedInIcon />
                 </a>
-<a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
+<a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
                   <FacebookIcon />
                 </a>
-                <a href="https://www.instagram.com/mikeops.pro" target="_blank" rel="noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
+                <a href="https://www.instagram.com/mikeops.pro" target="_blank" rel="noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
                   <InstagramIcon />
                 </a>
-                <a href="https://x.com/dotmannwudd" target="_blank" rel="noreferrer" aria-label="X" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
+                <a href="https://x.com/dotmannwudd" target="_blank" rel="noreferrer" aria-label="X" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-blue-100 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
                   <XIcon />
                 </a>
               </div>
@@ -242,12 +242,12 @@ export default function Footer() {
       </footer>
 
       {activeService && selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 backdrop-blur-[1px]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm">
           <div className="relative w-full max-w-xl rounded-3xl border border-blue-300/20 bg-[#06142d] p-7 text-white shadow-[0_0_60px_rgba(37,99,235,0.35)]">
             <button
               type="button"
               onClick={() => setActiveService(null)}
-              className="absolute right-5 top-5 roundd-full border border-white/10 bg-white/[0.06] p-2 text-blue-100 hover:bg-white/[0.06]"
+              className="absolute right-5 top-5 roundd-full border border-white/10 bg-white/10 p-2 text-blue-100 hover:bg-white/20"
               aria-label="Close popup"
             >
               <X className="h-4 w-4" />
@@ -265,7 +265,7 @@ export default function Footer() {
               {selectedService.description}
             </p>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.06] p-5">
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
               <h3 className="text-sm font-bold">Example use cases</h3>
               <ul className="mt-3 space-y-2">
                 {selectedService.examples.map((item) => (
