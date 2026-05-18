@@ -44,7 +44,7 @@ export default function Hero() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="#automation-request"
+                href="#automation-request?type=ai-automation-audit"
                 className="rounded-xl bg-cyan-500 px-7 py-4 font-bold text-black flex items-center gap-2 transition hover:scale-[1.02]"
               >
                 Let's Audit Your Business
