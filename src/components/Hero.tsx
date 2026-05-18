@@ -25,7 +25,6 @@ export default function Hero() {
             initial={{opacity:0,y:20}}
             animate={{opacity:1,y:0}}
           >
-
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-cyan-300 text-xs font-bold uppercase tracking-[0.2em]">
               <Activity size={14}/>
               MikeOps AI Operations Layer
@@ -43,15 +42,21 @@ export default function Hero() {
               AI systems, operational tooling, intelligent workflows, and connected infrastructure built for modern businesses.
             </p>
 
-            <div className="mt-10 flex gap-4">
+            <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="#automation-request"
-                className="rounded-xl bg-cyan-500 px-7 py-4 font-bold text-black flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-7 py-4 font-bold text-black flex items-center gap-2 transition hover:scale-[1.02]"
               >
-                Start Automation Audit — €49.99
+                Let's Audit Your Business
                 <ArrowRight size={18}/>
               </a>
             </div>
+
+            <p className="mt-5 text-sm text-slate-400">
+              Starting at{" "}
+              <span className="font-bold text-cyan-300">€49.99</span>
+              {" "}· Identify workflow gaps and uncover automation opportunities
+            </p>
 
           </motion.div>
 
@@ -65,7 +70,7 @@ export default function Hero() {
               <div className="flex items-center gap-3">
                 <Bot className="text-cyan-400"/>
                 <span className="font-bold text-white">
-                  MikeOps AI Console
+                  MikeOpI Console
                 </span>
               </div>
 
@@ -87,6 +92,25 @@ export default function Hero() {
                   </span>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-4">
+
+              <div className="rounded-xl bg-slate-900 p-4">
+                <BrainCircuit className="mb-2 text-cyan-400"/>
+                <div className="text-white font-bold">AI</div>
+              </div>
+
+              <div className="rounded-xl bg-slate-900 p-4">
+                <Workflow className="mb-2 text-cyan-400"/>
+                <div className="text-white font-bold">Systems</div>
+              </div>
+
+              <div className="rounded-xl bg-slate-900 p-4">
+                <Activity className="mb-2 text-cyan-400"/>
+                <div className="text-white font-bold">Ops</div>
+              </div>
+
             </div>
 
           </motion.div>
