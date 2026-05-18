@@ -7,7 +7,6 @@ import Services from './components/Services';
 import AutomationRequestForm from './components/AutomationRequestForm';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
-import FloatingAI from './components/FloatingAI';
 import VoiceflowEmbed from './components/VoiceflowEmbed';
 
 export default function App() {
@@ -27,7 +26,6 @@ export default function App() {
         <AutomationRequestForm />
       </main>
 
-      <FloatingAI />
       <Footer />
       <CookieConsent />
     </div>
