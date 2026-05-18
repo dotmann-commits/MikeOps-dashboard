@@ -80,7 +80,7 @@ export default function Projects() {
             </h2>
 
             <p className="mt-6 text-slate-300 text-lg leading-8">
-              sk questions about automation, workflow bottlenecks, AI systems, or operational challenges.
+              Ask questions about automation, workflow bottlenecks, AI systems, or operational challenges.
             </p>
 
             <div className="mt-10 grid gap-4">
