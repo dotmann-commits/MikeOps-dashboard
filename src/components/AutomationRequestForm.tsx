@@ -21,7 +21,7 @@ export default function AutomationRequestForm() {
           </div>
 
           <h2 className="text-4xl font-black sm:text-5xl">
-            Let's Audit Your Business
+            Submit an Automation Request
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
@@ -33,7 +33,7 @@ export default function AutomationRequestForm() {
             <div className="flex items-center justify-center gap-3 text-cyan-200">
               <ClipboardCheck size={18}/>
               <span className="font-bold">
-                Starting at €49.99 · Audit first, implementation later if needed
+                We review every request and recommend the best automation path.
               </span>
             </div>
           </div>
