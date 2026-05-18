@@ -18,9 +18,9 @@ const skillGroups = [
     icon: Cloud,
     accent: 'blue',
     skills: [
-      { name: 'Infrastructure & Cloud Basics', value: 65, detail: 'Docker deployments, cloud tooling, observability, and production system foundations' },
-      { name: 'CI/CD Pipelines', value: 55, detail: 'GitHub workflows, deployments, environment management' },
-      { name: 'Docker & Containers', value: 50, detail: 'Containerized apps, local AI, n8n and infrastructure services' },
+      { name: 'Infrastructure & Cloud Basics', value: 78, detail: 'Docker deployments, cloud tooling, observability, and production system foundations' },
+      { name: 'CI/CD Pipelines', value: 72, detail: 'GitHub workflows, deployments, environment management' },
+      { name: 'Docker & Containers', value: 80, detail: 'Containerized apps, local AI, n8n and infrastructure services' },
     ],
   },
   {
@@ -53,7 +53,7 @@ const skillGroups = [
     skills: [
       { name: 'Process Mapping', value: 78, detail: 'As-is / to-be workflows, swimlane flows' },
       { name: 'KPI & Metrics Definition', value: 74, detail: 'Identifying measurable outcomes for process changes' },
-      { name: 'Change Management Support', value: 68, detail: 'Documentation, training guides, stakeholder comms' },
+      { name: 'Change Management Support', value: 78, detail: 'Documentation, training guides, stakeholder comms' },
     ],
   },
   {
@@ -73,9 +73,9 @@ const skillGroups = [
     icon: Code2,
     accent: 'rose',
     skills: [
-      { name: 'React + TypeScript', value: 60, detail: 'Component design, hooks, state management basics' },
-      { name: 'Tailwind CSS', value: 68, detail: 'Utility-first styling and responsive layouts' },
-      { name: 'Backend Basics', value: 55, detail: 'REST endpoints, database queries, auth basics' },
+      { name: 'React + TypeScript', value: 72, detail: 'Component design, hooks, state management basics' },
+      { name: 'Tailwind CSS', value: 76, detail: 'Utility-first styling and responsive layouts' },
+      { name: 'Backend Basics', value: 65, detail: 'REST endpoints, database queries, auth basics' },
     ],
   },
 ];
