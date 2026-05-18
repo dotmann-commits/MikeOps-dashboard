@@ -2,10 +2,10 @@ import { Bot, Activity, ArrowRight, Workflow, BrainCircuit } from "lucide-react"
 import { motion } from "framer-motion";
 
 const workflow = [
-  "Lead enters website",
-  "MikeOps AI qualifies request",
-  "n8n workflow executes",
-  "CRM + Slack + Email update",
+  "Discover friction",
+  "Design intelligent workflows",
+  "Automate repetitive work",
+  "Scale with systems"
 ];
 
 export default function Hero() {
@@ -19,7 +19,6 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-
         <div className="grid lg:grid-cols-2 gap-14 items-center">
 
           <motion.div
@@ -41,31 +40,20 @@ export default function Hero() {
             </h1>
 
             <p className="mt-8 text-slate-300 text-lg leading-8 max-w-xl">
-              AI systems, workflow automation, operational tooling,
-              and connected infrastructure designed to remove repetitive work.
+              AI systems, operational tooling, intelligent workflows, and connected infrastructure built for modern businesses.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-
+            <div className="mt-10 flex gap-4">
               <a
                 href="#automation-request"
                 className="rounded-xl bg-cyan-500 px-7 py-4 font-bold text-black flex items-center gap-2"
               >
-                Start Automation Audit
+                Start Automation Audit — €49.99
                 <ArrowRight size={18}/>
               </a>
-
-              <a
-                href="#projects"
-                className="rounded-xl border border-slate-700 px-7 py-4 text-white font-semibold"
-              >
-                View Systems
-              </a>
-
             </div>
 
           </motion.div>
-
 
           <motion.div
             initial={{opacity:0,x:20}}
@@ -85,7 +73,6 @@ export default function Hero() {
             </div>
 
             <div className="space-y-4">
-
               {workflow.map((step,index)=>(
                 <div
                   key={step}
@@ -100,32 +87,11 @@ export default function Hero() {
                   </span>
                 </div>
               ))}
-
-            </div>
-
-            <div className="mt-8 grid grid-cols-3 gap-4">
-
-              <div className="rounded-xl bg-slate-900 p-4">
-                <BrainCircuit className="mb-2 text-cyan-400"/>
-                <div className="text-white font-bold">AI</div>
-              </div>
-
-              <div className="rounded-xl bg-slate-900 p-4">
-                <Workflow className="mb-2 text-cyan-400"/>
-                <div className="text-white font-bold">n8n</div>
-              </div>
-
-              <div className="rounded-xl bg-slate-900 p-4">
-                <Activity className="mb-2 text-cyan-400"/>
-                <div className="text-white font-bold">Ops</div>
-              </div>
-
             </div>
 
           </motion.div>
 
         </div>
-
       </div>
     </section>
   )
