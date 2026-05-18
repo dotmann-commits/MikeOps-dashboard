@@ -1,6 +1,10 @@
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, message: 'Method not allowed' });
+    return res.status(405).json({
+      success: false,
+      stage: 'method_check',
+      message: 'Method not allowed',
+    });
   }
 
   const webhookUrl = process.env.N8N_WEBHOOK_URL;
@@ -8,7 +12,8 @@ export default async function handler(req: any, res: any) {
   if (!webhookUrl) {
     return res.status(500).json({
       success: false,
-      message: 'Server webhook URL is not configured.',
+      stage: 'env_check',
+      message: 'N8N_WEBHOOK_URL is missing in Vercel environment variables.',
     });
   }
 
@@ -18,7 +23,7 @@ export default async function handler(req: any, res: any) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(req.body),
+      body: JSON.stringify(req.body ?? {}),
     });
 
     const text = await response.text();
@@ -27,14 +32,21 @@ export default async function handler(req: any, res: any) {
     try {
       data = JSON.parse(text);
     } catch {
-      data = { success: response.ok, message: text };
+      data = { raw: text };
     }
 
-    return res.status(response.status).json(data);
-  } catch (error) {
+    return res.status(response.status).json({
+      success: response.ok,
+      stage: 'n8n_response',
+      n8nStatus: response.status,
+      n8nResponse: data,
+    });
+  } catch (error: any) {
     return res.status(500).json({
       success: false,
-      message: 'Failed to submit automation request.',
+      stage: 'proxy_fetch_failed',
+      message: error?.message || 'Unknown proxy error',
+      errorName: error?.name || null,
     });
   }
 }
