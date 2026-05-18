@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Send } from "lucide-react";
 
 const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
@@ -10,14 +10,37 @@ export default function AutomationRequestForm() {
     company: "",
     currentChallenge: "",
     currentTools: "",
-    automationType: window.location.hash.includes("ai-automation-audit") ? "ai-automation-audit" : "",
-    priority: window.location.hash.includes("ai-automation-audit") ? "medium" : "",
-    message: window.location.hash.includes("ai-automation-audit")
-      ? "I would like MikeOps to audit my business workflows and identify automation opportunities."
-      : "",
+    automationType: "",
+    priority: "",
+    message: "",
   });
 
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    function handleAuditIntentClick(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      const auditLink = target.closest("[data-audit-intent='true']");
+
+      if (!auditLink) return;
+
+      setFormData((current) => ({
+        ...current,
+        automationType: "ai-automation-audit",
+        priority: "medium",
+        message:
+          current.message ||
+          "I would like MikeOps to audit my business workflows and identify automation opportunities.",
+      }));
+    }
+
+    document.addEventListener("click", handleAuditIntentClick);
+
+    return () => {
+      document.removeEventListener("click", handleAuditIntentClick);
+    };
+  }, []);
+
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
