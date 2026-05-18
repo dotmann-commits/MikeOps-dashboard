@@ -75,7 +75,7 @@ export default function MikeOpsAI() {
             <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4">
               <div className="flex items-center gap-3 text-sm font-bold text-cyan-200">
                 <Zap size={16} />
-                Real assistant embed cg your Voiceflow project ID.
+                Click the MikeOps AI chat bubble to start a live automation consultation.
               </div>
             </div>
           </div>
