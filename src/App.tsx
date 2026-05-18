@@ -8,13 +8,17 @@ import AutomationRequestForm from './components/AutomationRequestForm';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import FloatingAI from './components/FloatingAI';
+import VoiceflowEmbed from './components/VoiceflowEmbed';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-[#020617] text-gray-900">
+
+      <VoiceflowEmbed />
+
       <Navigation />
 
-      <main className="bg-[#020617]">
+      <main className="bg-[#020617']">
         <Hero />
         <MikeOpsAI />
         <Skills />
