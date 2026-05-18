@@ -18,9 +18,9 @@ const skillGroups = [
     icon: Cloud,
     accent: 'blue',
     skills: [
-      { name: 'Infrastructure & Cloud Basics', value: 65, detail: 'AWS/GCP fundamentals, VM provisioning, basic networking' },
-      { name: 'CI/CD Pipelines', value: 55, detail: 'GitHub Actions, deployments, environment management' },
-      { name: 'Docker & Containers', value: 50, detail: 'Containerisation, docker-compose, service orchestration' },
+      { name: 'Infrastructure & Cloud Basics', value: 65, detail: 'Docker deployments, cloud tooling, observability, and production system foundations' },
+      { name: 'CI/CD Pipelines', value: 55, detail: 'GitHub workflows, deployments, environment management' },
+      { name: 'Docker & Containers', value: 50, detail: 'Containerized apps, local AI, n8n and infrastructure services' },
     ],
   },
   {
