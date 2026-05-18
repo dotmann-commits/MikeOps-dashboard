@@ -204,7 +204,6 @@ export default function AutomationRequestForm() {
                 <option value="high">High — urgent business need</option>
               </select>
             </label>
-          <
           <label className="grid gap-2">
             <span className="text-sm font-bold text-slate-200">Additional Message</span>
             <textarea
