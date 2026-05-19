@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Send } from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
 
-const webhookUrl="/api/automation-request";
+const webhookUrl = "/api/automation-request";
 
 export default function AutomationRequestForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +16,7 @@ export default function AutomationRequestForm() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   useEffect(() => {
     function handleAuditIntentClick(event: MouseEvent) {
@@ -41,10 +42,11 @@ export default function AutomationRequestForm() {
     };
   }, []);
 
-
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
+    setStatus("idle");
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -55,9 +57,10 @@ export default function AutomationRequestForm() {
     e.preventDefault();
 
     setLoading(true);
+    setStatus("idle");
 
     try {
-      await fetch(webhookUrl, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type":"application/json"
@@ -69,7 +72,11 @@ export default function AutomationRequestForm() {
         })
       });
 
-      alert("Request submitted successfully");
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      setStatus("success");
 
       setFormData({
         fullName:"",
@@ -84,7 +91,7 @@ export default function AutomationRequestForm() {
 
     } catch(err){
       console.error(err);
-      alert("Submission failed");
+      setStatus("error");
     }
 
     setLoading(false);
@@ -96,9 +103,7 @@ export default function AutomationRequestForm() {
       className="bg-[#020617] px-6 py-24 text-white"
     >
       <div className="mx-auto max-w-5xl">
-
         <div className="mb-12 text-center">
-
           <h2 className="text-5xl font-black">
             Submit Automation Request
           </h2>
@@ -106,16 +111,49 @@ export default function AutomationRequestForm() {
           <p className="mt-5 text-slate-400 max-w-2xl mx-auto">
             Tell MikeOps what you want automated and where your current workflow slows down.
           </p>
-
         </div>
 
         <form
           onSubmit={handleSubmit}
           className="space-y-6 rounded-[32px] border border-slate-800 bg-[#071120] p-8"
         >
+          {status === "success" && (
+            <div className="rounded-2xl border border-blue-400/25 bg-blue-500/10 px-6 py-5 text-blue-50 shadow-[0_20px_60px_rgba(37,99,235,0.15)]">
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w1 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-200">
+                  <CheckCircle size={22} />
+                </div>
+
+                <div>
+                  <p className="text-base font-black text-white">
+                    Form submitted successfully.
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    We’ve received your request. The MikeOps team will review it and reach out to you soon with the next best step.
+                  </p>
+
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200/70">
+                    MikeOps • AI Automation • Operations Systems
+            </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {status === "error" && (
+            <div className="flex items-start gap-3 rounded-2xl border border-red-400/20 bg-red-400/10 px-5 py-4 text-red-200">
+              <AlertCircle className="mt-1 shrink-0" size={20}/>
+              <div>
+                <p className="font-black">Submission failed.</p>
+                <p className="mt-1 text-sm text-red-100/80">
+                  Please wait a moment and try again.
+                </p>
+              </div>
+            </div>
+          )}
 
           <div className="grid gap-6 md:grid-cols-2">
-
             <input
               required
               name="fullName"
@@ -134,9 +172,7 @@ export default function AutomationRequestForm() {
               placeholder="Email"
               className="rounded-xl bg-slate-950 border border-slate-700 px-4 py-4"
             />
-
           </div>
-
 
           <input
             name="company"
@@ -165,7 +201,6 @@ export default function AutomationRequestForm() {
           />
 
           <div className="grid gap-6 md:grid-cols-2">
-
             <select
               required
               name="automationType"
@@ -194,7 +229,6 @@ export default function AutomationRequestForm() {
               <option value="medium">Medium — Audit request / needed soon</option>
               <option value="high">High</option>
             </select>
-
           </div>
 
           <textarea
@@ -209,14 +243,12 @@ export default function AutomationRequestForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-cyan-400 py-4 font-black text-black flex items-center justify-center gap-2"
+            className="w-full rounded-xl bg-cyan-400 py-4 font-black text-black flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-70"
           >
             <Send size={18}/>
             {loading ? "Submitting..." : "Submit Automation Request"}
           </button>
-
         </form>
-
       </div>
     </section>
   );
