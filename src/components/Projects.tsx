@@ -1,21 +1,36 @@
+declare global {
+  interface Window {
+    voiceflow?: any;
+  }
+}
+
 import { Bot, MessageSquare, ArrowRight, CalendarDays } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Projects() {
   const [open, setOpen] = useState(false);
 
-  function openMikeOpsAI() {
+  function openVoiceflowChat() {
     setOpen(false);
 
-    const vfButton =
-      document.querySelector('[class*="voiceflow"]') ||
-      document.querySelector('[id*="voiceflow"]') ||
-      document.querySelector("iframe");
-
-    if (vfButton instanceof HTMLElement) {
-      vfButton.click();
-    }
+    setTimeout(() => {
+      try {
+        window.voiceflow?.chat?.open();
+      } catch(e) {
+        console.log("Voiceflow chat not ready",e);
+      }
+    },300);
   }
+
+  useEffect(() => {
+    const handler = () => setOpen(true);
+
+    window.addEventListener("openMikeOpsAIModal", handler);
+
+    return () => {
+      window.removeEventListener("openMikeOpsAIModal", handler);
+    };
+  }, []);
 
   return (
     <>
@@ -24,7 +39,6 @@ export default function Projects() {
         className="bg-[#020617] px-6 py-24 text-white"
       >
         <div className="mx-auto max-w-6xl">
-
           <div className="mb-12">
             <h2 className="text-5xl font-black">
               Capability Demonstrations
@@ -36,6 +50,7 @@ export default function Projects() {
           </div>
 
           <button
+            type="button"
             onClick={() => setOpen(true)}
             className="w-full rounded-[32px] border border-slate-800 bg-[#071120] p-8 text-left transition hover:border-cyan-400"
           >
@@ -55,17 +70,16 @@ export default function Projects() {
               </div>
             </div>
           </button>
-
         </div>
       </section>
 
       {open && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center px-6">
-
           <div className="w-full max-w-3xl rounded-[32px] border border-slate-800 bg-[#071120] p-10 text-white relative">
-
             <button
+              type="button"
               onClick={() => setOpen(false)}
+              aria-label="Close MikeOps AI modal"
               className="absolute right-6 top-6 text-slate-400 text-2xl"
             >
               ×
@@ -76,7 +90,7 @@ export default function Projects() {
             </div>
 
             <h2 className="text-5xl font-black">
-              MikeOps AI
+             MikeOps AI
             </h2>
 
             <p className="mt-6 text-slate-300 text-lg leading-8">
@@ -84,17 +98,17 @@ export default function Projects() {
             </p>
 
             <div className="mt-10 grid gap-4">
-
               <button
-                onClick={openMikeOpsAI}
+                type="button"
+                onClick={openVoiceflowChat}
                 className="rounded-2xl bg-cyan-400 text-black px-6 py-5 font-black flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
-                  <MessageSquare size={20}/>
+                  <MessageSquare size={20} />
                   Chat with MikeOps AI
                 </div>
 
-                <ArrowRight size={18}/>
+                <ArrowRight size={18} />
               </button>
 
               <a
@@ -103,20 +117,16 @@ export default function Projects() {
                 className="rounded-2xl border border-slate-700 px-6 py-5 font-bold flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
-                  <CalendarDays size={20}/>
+                  <CalendarDays size={20} />
                   Book an Automation Audit
                 </div>
 
-                <ArrowRight size={18}/>
+                <ArrowRight size={18} />
               </a>
-
             </div>
-
           </div>
-
         </div>
       )}
-
     </>
   );
 }

@@ -1,52 +1,49 @@
-export default async function handler(req: any, res: any) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({
-      success: false,
-      stage: 'method_check',
-      message: 'Method not allowed',
-    });
-  }
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-  const webhookUrl = process.env.N8N_WEBHOOK_URL;
+const requests = new Map<string, number>();
 
-  if (!webhookUrl) {
-    return res.status(500).json({
-      success: false,
-      stage: 'env_check',
-      message: 'N8N_WEBHOOK_URL is missing in Vercel environment variables.',
-    });
-  }
+export default async function handler(
+req: VercelRequest,
+res: VercelResponse
+){
 
-  try {
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(req.body ?? {}),
-    });
+if(req.method !== "POST"){
+return res.status(405).json({
+error:"Method not allowed"
+});
+}
 
-    const text = await response.text();
+const ip =
+(req.headers["x-forwarded-for"] as string) ||
+req.socket.remoteAddress ||
+"unknown";
 
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      data = { raw: text };
-    }
+const now = Date.now();
+const last = requests.get(ip);
 
-    return res.status(response.status).json({
-      success: response.ok,
-      stage: 'n8n_response',
-      n8nStatus: response.status,
-      n8nResponse: data,
-    });
-  } catch (error: any) {
-    return res.status(500).json({
-      success: false,
-      stage: 'proxy_fetch_failed',
-      message: error?.message || 'Unknown proxy error',
-      errorName: error?.name || null,
-    });
-  }
+if(last && now-last < 30000){
+return res.status(429).json({
+error:"Too many requests. Wait 30 seconds."
+});
+}
+
+requests.set(ip,now);
+
+const response = await fetch(
+process.env.N8N_WEBHOOK_URL!,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(req.body)
+}
+);
+
+const data=await response.text();
+
+return res.status(200).json({
+success:true,
+data
+});
 }

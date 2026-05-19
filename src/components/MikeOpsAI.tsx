@@ -1,5 +1,16 @@
 import { Bot, MessageSquare, Sparkles, Zap } from "lucide-react";
 
+declare global {
+  interface Window {
+    voiceflow?: {
+      chat?: {
+        open?: () => void;
+        interact?: (action: unknown) => void;
+      };
+    };
+  }
+}
+
 const prompts = [
   "I want more leads",
   "Automate Gmail",
@@ -8,6 +19,17 @@ const prompts = [
 ];
 
 export default function MikeOpsAI() {
+  function askMikeOpsAI(prompt: string) {
+    window.voiceflow?.chat?.open?.();
+
+    setTimeout(() => {
+      window.voiceflow?.chat?.interact?.({
+        type: "text",
+        payload: prompt,
+      });
+    }, 500);
+  }
+
   return (
     <section
       id="ai-assistant"
@@ -32,13 +54,14 @@ export default function MikeOpsAI() {
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {prompts.map((prompt) => (
-                <a
+                <button
                   key={prompt}
-                  href="#automation-request"
-                  className="rounded-2xl border border-slate-800 bg-slate-950 px-5 py-4 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-white"
+                  type="button"
+                  onClick={() => askMikeOpsAI(prompt)}
+                  className="rounded-2xl border border-slate-800 bg-slate-950 px-5 py-4 text-left text-sm font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-white"
                 >
                   {prompt}
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -55,11 +78,11 @@ export default function MikeOpsAI() {
                 </div>
               </div>
 
-              <MessageSquare className="text-cyan-300" />
+              <MessageSquare className="text-cyan-30" />
             </div>
 
             <div className="space-y-4">
-              <div className="max-w-[85%] rounded-2xl rounded-tlsm bg-slate-900 px-5 py-4 text-sm leading-7 text-slate-200">
+              <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-slate-900 px-5 py-4 text-sm leading-7 text-slate-200">
                 Hi — I’m MikeOps AI. Tell me what repetitive process you want to improve, and I’ll help map the automation.
               </div>
 
@@ -73,9 +96,9 @@ export default function MikeOpsAI() {
             </div>
 
             <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4">
-              <div className="flex items-center gap-3 text-sm font-bold text-cyan-200">
+              <div className="ter gap-3 text-sm font-bold text-cyan-200">
                 <Zap size={16} />
-                Click the MikeOps AI chat bubble to start a live automation consultation.
+                Click a prompt card to start a live automation consultation.
               </div>
             </div>
           </div>

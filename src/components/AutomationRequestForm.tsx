@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Send } from "lucide-react";
 
-const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+const webhookUrl="/api/automation-request";
 
 export default function AutomationRequestForm() {
   const [formData, setFormData] = useState({
