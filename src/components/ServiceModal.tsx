@@ -1,7 +1,7 @@
 import {
   X, ArrowRight, PlusCircle, CalendarDays, Link2,
   Clock, ShieldCheck, TrendingUp, Users, Bell, BarChart3,
-  Server, Workflow, Database, FileText, Route, LayoutDashboard, Headphones
+  Server, Workflow, Database, FileText, Route, Headphones
 } from "lucide-react";
 
 type Service = {
@@ -51,6 +51,21 @@ const logoMap: Record<string, string> = {
 function logoUrl(tool: string) {
   const slug = logoMap[tool];
   return slug ? `https://cdn.simpleicons.org/${slug}` : "";
+}
+
+function getStatusLabel(service: Service) {
+  const id = service.id ?? "";
+
+  if (id === "crm-setup") return "Contact → Active Pipeline";
+  if (id === "infra-automation-monitoring") return "Issue Detected → System Healthy";
+  if (id === "lead-capture") return "Visitor → Qualified Lead";
+  if (id === "followup") return "Lead → Re-engaged Customer";
+  if (id === "task-routing") return "Request → Assigned Owner";
+  if (id === "ticket-workflow") return "Ticket → Resolved";
+  if (id === "bpa") return "Manual → Automated Workflow";
+  if (id === "reporting") return "Data → Actionable Insight";
+
+  return "Workflow → Automated System";
 }
 
 function getConfig(service: Service): {
@@ -188,16 +203,16 @@ function getConfig(service: Service): {
         { title: "2. Find Bottleneck", subtitle: "Identify wasted steps", tool: "Workflow Map", logo: "" },
         { title: "3. Redesign Flow", subtitle: "Simplify the process", tool: "AI System", logo: "AI System" },
         { title: "4. Automate Steps", subtitle: "Build repeatable workflows", tool: "n8n", logo: "n8n" },
-        { title: "5. Measure Impact", subtitle: "Track before and after", tool: "Dashboard", logo: "" },
+        { title: "5. Maintain & Improve", subtitle: "Human review and optimization", tool: "Dashboard", logo: "" },
       ],
-      tools: ["Notion", "AI System", "n8n", "Airtable", "Make", "Zapier", "Dashboard"],
+      tools: ["Notion", "AI System", "n8n", "Airtable", "Google Analytics", "Search Console", "Dashboard"],
       benefits: [
+        { title: "Improves Visibility", text: "SEO and analytics help turn operational improvements into discoverable growth.", icon: TrendingUp },
         { title: "Removes Bottlenecks", text: "Slow manual steps are redesigned into cleaner workflows.", icon: Workflow },
-        { title: "Improves Experience", text: "The process becomes easier for customers and internal teams.", icon: LayoutDashboard },
-        { title: "Saves Time", text: "Repeated admin work is reduced or automated.", icon: Clock },
-        { title: "Measurable Change", text: "You can track what improved after automation.", icon: BarChart3 },
+        { title: "Keeps Humans in Control", text: "Important decisions can include approval steps, reviews, and clear ownership.", icon: Users },
+        { title: "Ongoing Maintenance", text: "Systems can be monitored, improved, and adjusted as the business changes.", icon: ShieldCheck },
       ],
-      how: "We analyse the process, redesign the weak points, automate the repeatable steps, and measure the operational improvement.",
+      how: "We analyse workflows, improve visibility with SEO and analytics, automate repetitive work, and add human-in-the-loop review plus maintenance so the system stays reliable over time.",
     };
   }
 
@@ -322,8 +337,8 @@ export default function ServiceModal({ service, onClose }: { service: Service | 
             </div>
 
             <div className="mt-4 flex justify-center">
-              <span className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-5 py-2 text-sm font-bold text-emerald-200">
-                Resolved → System Healthy
+              <span className="rounded-full bo400/30 bg-emerald-500/10 px-5 py-2 text-sm font-bold text-emerald-200">
+                {getStatusLabel(service)}
               </span>
             </div>
 
