@@ -6,9 +6,9 @@ export const skillGroups = [
     label: 'Platform Engineering',
     color: 'blue',
     skills: [
-      { name: 'Infrastructure & Cloud Basics', level: 80, description: 'AWS/GCP fundamentals, VM provisioning, basic networking' },
-      { name: 'CI/CD Pipelines', level: 75, description: 'GitHub Actions, deployment workflows, environment management' },
-      { name: 'Docker & Containers', level: 82, description: 'Containerisation basics, docker-compose, service orchestration' },
+      { name: 'Infrastructure & Cloud Basics', level: 65, description: 'AWS/GCP fundamentals, VM provisioning, basic networking' },
+      { name: 'CI/CD Pipelines', level: 55, description: 'GitHub Actions, deployment workflows, environment management' },
+      { name: 'Docker & Containers', level: 50, description: 'Containerisation basics, docker-compose, service orchestration' },
     ],
   },
   {
@@ -16,9 +16,9 @@ export const skillGroups = [
     label: 'Operations Support',
     color: 'green',
     skills: [
-      { name: 'Incident & Issue Triage', level: 92, description: 'Root-cause analysis, escalation paths, SLA tracking' },
-      { name: 'Internal Workflow Design', level: 88, description: 'Mapping, gap analysis, and redesign of business processes' },
-      { name: 'Cross-team Collaboration', level: 92, description: 'Bridging technical and non-technical stakeholders' },
+      { name: 'Incident & Issue Triage', level: 85, description: 'Root-cause analysis, escalation paths, SLA tracking' },
+      { name: 'Internal Workflow Design', level: 80, description: 'Mapping, gap analysis, and redesign of business processes' },
+      { name: 'Cross-team Collaboration', level: 90, description: 'Bridging technical and non-technical stakeholders' },
     ],
   },
   {
@@ -26,9 +26,9 @@ export const skillGroups = [
     label: 'CRM Automation',
     color: 'orange',
     skills: [
-      { name: 'HubSpot / Salesforce Config', level: 78, description: 'Pipeline setup, field mapping, deal stage automation' },
-      { name: 'Lead Capture & Routing', level: 88, description: 'Form integrations, webhook triggers, assignment rules' },
-      { name: 'Follow-up Sequences', level: 84, description: 'Email/task automation tied to CRM events' },
+      { name: 'HubSpot / Salesforce Config', level: 70, description: 'Pipeline setup, field mapping, deal stage automation' },
+      { name: 'Lead Capture & Routing', level: 75, description: 'Form integrations, webhook triggers, assignment rules' },
+      { name: 'Follow-up Sequences', level: 72, description: 'Email/task automation tied to CRM events' },
     ],
   },
   {
@@ -37,7 +37,7 @@ export const skillGroups = [
     color: 'teal',
     skills: [
       { name: 'Process Mapping (BPMN)', level: 78, description: 'As-is / to-be diagrams, swimlane flows' },
-      { name: 'KPI & Metrics Definition', level: 82, description: 'Identifying measurable outcomes for process changes' },
+      { name: 'KPI & Metrics Definition', level: 74, description: 'Identifying measurable outcomes for process changes' },
       { name: 'Change Management Support', level: 68, description: 'Documentation, training guides, stakeholder comms' },
     ],
   },
@@ -47,8 +47,8 @@ export const skillGroups = [
     color: 'cyan',
     skills: [
       { name: 'n8n / Make (Integromat)', level: 82, description: 'Multi-step automations, webhook triggers, API calls' },
-      { name: 'Zapier Integrations', level: 86, description: 'App connectors, filters, data transformation' },
-      { name: 'REST API Consumption', level: 84, description: 'Reading API docs, building HTTP request chains' },
+      { name: 'Zapier Integrations', level: 80, description: 'App connectors, filters, data transformation' },
+      { name: 'REST API Consumption', level: 70, description: 'Reading API docs, building HTTP request chains' },
     ],
   },
   {

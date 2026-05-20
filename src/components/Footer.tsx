@@ -1,7 +1,7 @@
 import { Linkedin, Facebook, Instagram, X, Mail } from "lucide-react";
 
 export default function Footer() {
-  const quickLinks = ["Home", "Skills", "Capabilities", "Services", "Contact"];
+  const quickLinks = ["Home", "Services", "Skills", "Contact"];
 
   const services = [
     "AI Automations",
@@ -58,7 +58,7 @@ export default function Footer() {
   </a>
 
   <a
-    href="https://www.linkedin.com/company/mikeops/"
+    href="https://www.instagram.com/mikeops.pro/"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Instagram"

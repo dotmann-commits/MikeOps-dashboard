@@ -8,7 +8,7 @@ export default function VoiceflowEmbed() {
     script.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
 
     script.onload = () => {
-      window.voiceflow?.chat.load({
+      window.voiceflow?.chat?.load?.({
         verify: { projectID: "69da089cab005891dd1033cd" },
 
         url: "https://general-runtime.voiceflow.com",

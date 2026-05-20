@@ -2,7 +2,6 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import MikeOpsAI from './components/MikeOpsAI';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
 import Services from './components/Services';
 import AutomationRequestForm from './components/AutomationRequestForm';
 import Footer from './components/Footer';
@@ -20,9 +19,8 @@ export default function App() {
       <main className="bg-[#020617']">
         <Hero />
         <MikeOpsAI />
-        <Skills />
-        <Projects />
         <Services />
+        <Skills />
         <AutomationRequestForm />
       </main>
 

@@ -53,8 +53,9 @@ export default function AutomationRequestForm() {
     });
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    e.stopPropagation();
 
     setLoading(true);
     setStatus("idle");
@@ -115,12 +116,14 @@ export default function AutomationRequestForm() {
 
         <form
           onSubmit={handleSubmit}
+          action="#"
+          method="dialog"
           className="space-y-6 rounded-[32px] border border-slate-800 bg-[#071120] p-8"
         >
           {status === "success" && (
             <div className="rounded-2xl border border-blue-400/25 bg-blue-500/10 px-6 py-5 text-blue-50 shadow-[0_20px_60px_rgba(37,99,235,0.15)]">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w1 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-200">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-200">
                   <CheckCircle size={22} />
                 </div>
 

@@ -6,8 +6,8 @@ const capabilityTabs = {
   AI: {
     icon: BrainCircuit,
     tools: [
-      "MikeOps AI Assistant",
-      "Voice AI Agent",
+      "AI Voice & Chat Assistant",
+      "Automated Reporting & Dashboards",
       "AI Email Classification",
       "AI Workflow Recommendations",
     ],
@@ -55,7 +55,7 @@ export default function Hero() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-cyan-300 text-xs font-bold uppercase tracking-[0.2em]">
               <Activity size={14} />
-              MikeOps AI Operations Layer
+              AI Automation • Infrastructure • Systems Engineering
             </div>
 
             <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] text-white">

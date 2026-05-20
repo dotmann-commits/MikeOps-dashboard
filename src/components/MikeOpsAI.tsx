@@ -4,6 +4,7 @@ declare global {
   interface Window {
     voiceflow?: {
       chat?: {
+        load?: (config: unknown) => void;
         open?: () => void;
         interact?: (action: unknown) => void;
       };

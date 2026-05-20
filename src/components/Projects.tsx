@@ -1,9 +1,3 @@
-declare global {
-  interface Window {
-    voiceflow?: any;
-  }
-}
-
 import { Bot, MessageSquare, ArrowRight, CalendarDays } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -15,7 +9,7 @@ export default function Projects() {
 
     setTimeout(() => {
       try {
-        window.voiceflow?.chat?.open();
+        window.voiceflow?.chat?.open?.();
       } catch(e) {
         console.log("Voiceflow chat not ready",e);
       }

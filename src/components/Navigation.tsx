@@ -6,9 +6,8 @@ export default function Navigation() {
 
   const links = [
     { label: "Home", href: "#hero" },
-    { label: "Skills", href: "#skills" },
-    { label: "Capabilities", href: "#projects" },
     { label: "Services", href: "#services" },
+    { label: "Skills", href: "#skills" },
     { label: "Contact", href: "#automation-request" },
   ];
 
