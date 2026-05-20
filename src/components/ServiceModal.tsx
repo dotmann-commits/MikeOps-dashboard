@@ -186,37 +186,37 @@ export default function ServiceModal({ service, onClose }: { service: Service | 
           <div>
             <h3 className="mb-3 text-lg font-black">What it looks like</h3>
 
-            <div className="grid gap-3 md:grid-cols-5">
+            <div className="grid grid-cols-5 gap-1 md:gap-3">
               {config.steps.map((step, index) => {
                 const logo = logoUrl(step.logo);
 
                 return (
-                  <div key={step.title} className="relative rounded-2xl border border-white/10 bg-slate-950/70 p-3 text-center shadow-lg">
+                  <div key={step.title} className="relative rounded-xl border border-white/10 bg-slate-950/70 p-1.5 text-center shadow-lg md:rounded-2xl md:p-3">
                     {index < config.steps.length - 1 && (
                       <div className="absolute -right-4 top-1/2 10 hidden -translate-y-1/2 text-cyan-300 md:block">
                         <ArrowRight className="animate-pulse drop-shadow-[0_0_10px_rgba(34,211,238,0.9)]" size={26} />
                       </div>
                     )}
 
-                    <p className="text-sm font-black">{step.title}</p>
-                    <p className="mt-1 min-h-[34px] text-[11px] leading-relaxed text-slate-300">{step.subtitle}</p>
+                    <p className="text-[9px] font-black leading-tight md:text-sm">{step.title}</p>
+                    <p className="mt-1 hidden min-h-[34px] text-[11px] leading-relaxed text-slate-300 sm:block">{step.subtitle}</p>
 
-                    <div className="mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 ring-1 ring-white/10">
+                    <div className="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-xl bg-slate-900 ring-1 ring-white/10 md:mt-3 md:h-12 md:w-12 md:rounded-2xl">
                       {logo ? (
                         <img
                           src={logo}
                           alt={step.tool}
-                          className="h-8 w-8 object-contain"
+                          className="h-5 w-5 object-contain md:h-8 md:w-8"
                           onError={(event) => {
                             event.currentTarget.style.display = "none";
                           }}
                         />
                       ) : (
-                        <Server size={38} className="text-blue-300" />
+                        <Server size={22} className="text-blue-300 md:size-[38px]" />
                       )}
                     </div>
 
-                    <div className="mx-auto mt-3 inline-flex rounded-full border border-white/10 bg-slate-900 px-3 py-1 text-xs font-bold">
+                    <div className="mx-auto mt-2 hidden rounded-full border border-white/10 bg-slate-900 px-3 py-1 text-xs font-bold sm:inline-flex">
                       {step.tool}
                     </div>
                   </div>
