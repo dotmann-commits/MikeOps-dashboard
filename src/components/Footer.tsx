@@ -12,7 +12,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-cyan-500/10 bg-[#020817]">
+    <footer id="contact" className="relative overflow-hidden border-t border-cyan-500/10 bg-[#020817]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,#1d4ed833,transparent_45%),radial-gradient(circle_at_right,#06b6d433,transparent_45%)]" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-14">

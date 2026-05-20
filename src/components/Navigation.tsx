@@ -8,7 +8,7 @@ export default function Navigation() {
     { label: "Home", href: "#hero" },
     { label: "Services", href: "#services" },
     { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#automation-request" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
