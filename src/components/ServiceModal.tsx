@@ -1,7 +1,7 @@
 import {
   X, ArrowRight, PlusCircle, CalendarDays, Link2,
   Clock, ShieldCheck, TrendingUp, Users, Bell, BarChart3,
-  Server, Workflow, Bot, Database, FileText, Route, LayoutDashboard
+  Server, Workflow, Database, FileText, Route, LayoutDashboard, Headphones
 } from "lucide-react";
 
 type Service = {
@@ -60,88 +60,185 @@ function getConfig(service: Service): {
   how: string;
 } {
   const id = service.id ?? "";
-  const title = service.title.toLowerCase();
 
-  if (id.includes("infra") || title.includes("infrastructure") || title.includes("monitoring")) {
+  if (id === "crm-setup") {
     return {
       steps: [
-        { title: "1. Endpoint / API", subtitle: "Check services, APIs, servers", tool: "HTTP / HTTPS", logo: "" },
-        { title: "2. Collect Metrics", subtitle: "Pull metrics & system data", tool: "Prometheus", logo: "Prometheus" },
-        { title: "3. Detect Issue", subtitle: "Alert rules & thresholds", tool: "Grafana", logo: "Grafana" },
-        { title: "4. Trigger Alert", subtitle: "Automation workflow", tool: "n8n", logo: "n8n" },
-        { title: "5. Notify Team", subtitle: "Send alerts & follow-up", tool: "Alert System", logo: "Alert System" },
+        { title: "1. Audit CRM", subtitle: "Review fields, stages, and gaps", tool: "CRM System", logo: "CRM System" },
+        { title: "2. Configure Pipeline", subtitle: "Set stages and deal flow", tool: "HubSpot", logo: "HubSpot" },
+        { title: "3. Map Data", subtitle: "Connect forms and records", tool: "Airtable", logo: "Airtable" },
+        { title: "4. Automate Actions", subtitle: "Tasks, reminders, updates", tool: "n8n", logo: "n8n" },
+        { title: "5. Track Follow-up", subtitle: "Keep deals moving", tool: "Gmail", logo: "Gmail" },
       ],
-      tools: ["n8n", "Prometheus", "Grafana", "Docker", "Alert System", "Airtable", "AI System"],
+      tools: ["CRM System", "HubSpot", "Airtable", "n8n", "Gmail", "Make", "Zapier"],
       benefits: [
-        { title: "Detects Issues Early", text: "Real-time monitoring and alerting catch problems before customers or teams are impacted.", icon: Clock },
-        { title: "Reduces Downtime", text: "Automated alerts and workflows help your team respond faster and keep systems running.", icon: Clock },
-        { title: "Improves Reliability", text: "Consistent monitoring keeps infrastructure healthy and dependable.", icon: ShieldCheck },
-        { title: "Better Decisions", text: "Dashboards and logs give you visibility to make smarter, faster decisions.", icon: TrendingUp },
-        { title: "Scales With You", text: "Monitoring and automation scale without extra manual effort.", icon: Users },
+        { title: "Cleaner Pipeline", text: "Deals and contacts move through clear stages instead of scattered notes.", icon: Route },
+        { title: "Less Manual Admin", text: "Updates, reminders, and records happen automatically.", icon: Clock },
+        { title: "Better Follow-up", text: "Leads are easier to track and less likely to be forgotten.", icon: Bell },
+        { title: "Sales Visibility", text: "You can see where each opportunity stands.", icon: BarChart3 },
       ],
-      how: "We monitor your critical systems, detect anomalies in real time, trigger automated workflows, and notify the right people — reducing downtime and preventing business disruption.",
+      how: "We structure your CRM pipeline, connect your forms and tools, and automate the repetitive actions that keep deals moving.",
     };
   }
 
-  if (id.includes("assistant") || title.includes("assistant")) {
+  if (id === "infra-automation-monitoring") {
     return {
       steps: [
-        { title: "1. User Message", subtitle: "Website chat or voice call", tool: "Voiceflow", logo: "Voiceflow" },
-        { title: "2. AI Reasoning", subtitle: "Understand intent", tool: "AI System", logo: "AI System" },
-        { title: "3. Voice / Chat", subtitle: "Respond naturally", tool: "Vapi", logo: "Vapi" },
-        { title: "4. Capture Context", subtitle: "Lead details and request", tool: "Airtable", logo: "Airtable" },
-        { title: "5. Notify Team", subtitle: "Send summary", tool: "Alert System", logo: "Alert System" },
+        { title: "1. Monitor Service", subtitle: "Track APIs, servers, and apps", tool: "Prometheus", logo: "Prometheus" },
+        { title: "2. Collect Metrics", subtitle: "Measure health and errors", tool: "Grafana", logo: "Grafana" },
+        { title: "3. Detect Issue", subtitle: "Rules catch failures early", tool: "Docker", logo: "Docker" },
+        { title: "4. Trigger Workflow", subtitle: "Start incident automation", tool: "n8n", logo: "n8n" },
+        { title: "5. Notify Team", subtitle: "Send alert and next action", tool: "Alert System", logo: "Alert System" },
       ],
-      tools: ["Voiceflow", "Vapi", "Retell", "AI System", "n8n", "Airtable", "Alert System"],
+      tools: ["Prometheus", "Grafana", "Docker", "n8n", "Alert System", "Airtable", "AI System"],
       benefits: [
-        { title: "Instant Custom Help", text: "Visitors get answers immediately without waiting for a human reply.", icon: Bot },
-        { title: "Captures Better Context", text: "The assistant collects useful details before handoff.", icon: FileText },
-        { title: "Qualifies Leads", text: "Good opportunities can be routed to the right workflow.", icon: Route },
-        { title: "Works 24/7", text: "Your business can keep responding even outside working hours.", icon: Clock },
+        { title: "Faster Detection", text: "Issues are identified before they become larger incidents.", icon: Clock },
+        { title: "Lower Downtime", text: "Alerts and workflows help teams respond quickly.", icon: ShieldCheck },
+        { title: "Clear Metrics", text: "Dashboards show what is healthy and what needs attention.", icon: BarChart3 },
+        { title: "Operational Control", text: "Your infrastructure becomes easier to observe and manage.", icon: Server },
       ],
-      how: "We connect chat or voice assistants to your business workflows so users get answers, leads are captured, and your team receives clean summaries.",
+      how: "We connect monitoring, metrics, alert rules, and automation so system problems are detected and routed quickly.",
     };
   }
 
-  if (title.includes("business") || title.includes("optimization") || id.includes("bpa")) {
+  if (id === "lead-capture") {
     return {
       steps: [
-        { title: "1. Map Process", subtitle: "Understand current workflow", tool: "Notion", logo: "Notion" },
-        { title: "2. Improve UX", subtitle: "Frontend and form flow", tool: "React", logo: "React" },
-        { title: "3. Automate Steps", subtitle: "Remove repeated work", tool: "n8n", logo: "n8n" },
-        { title: "4. Store Data", subtitle: "Clean operational records", tool: "Airtable", logo: "Airtable" },
-        { title: "5. Track Results", subtitle: "Dashboards and reports", tool: "Dashboard", logo: "" },
+        { title: "1. Visitor Submits", subtitle: "Website, form, ad, or chat", tool: "React", logo: "React" },
+        { title: "2. Validate Lead", subtitle: "Clean and structure data", tool: "n8n", logo: "n8n" },
+        { title: "3. Store Record", subtitle: "Save lead information", tool: "Airtable", logo: "Airtable" },
+        { title: "4. Notify Team", subtitle: "Send alert instantly", tool: "Alert System", logo: "Alert System" },
+        { title: "5. Start Follow-up", subtitle: "Email or task created", tool: "Gmail", logo: "Gmail" },
       ],
-      tools: ["React", "TypeScript", "Tailwind", "n8n", "Airtable", "Notion", "AI System"],
+      tools: ["React", "n8n", "Airtable", "Gmail", "Alert System", "Make", "Zapier"],
       benefits: [
-        { title: "Removes Bottlenecks", text: "Manual slow points are redesigned into cleaner systems.", icon: Workflow },
-        { title: "Improves User Experience", text: "Frontend flows become easier for customers and internal teams.", icon: LayoutDashboard },
-        { title: "Reduces Manual Work", text: "Repeated admin steps can be automated.", icon: Clock },
-        { title: "Makes Work Measurable", text: "You can track what changed and whether it helped.", icon: BarChart3 },
+        { title: "No Missed Leads", text: "Every submission is captured and routed automatically.", icon: Bell },
+        { title: "Faster Response", text: "Your team gets notified as soon as a lead arrives.", icon: Clock },
+        { title: "Cleaner Records", text: "Lead data is stored consistently for follow-up.", icon: Database },
+        { title: "Better Conversion", text: "Fast structured follow-up improves the chance of closing.", icon: TrendingUp },
       ],
-      how: "We review how work happens today, redesign the weak points, improve the frontend experience, and automate the repeatable steps.",
+      how: "We connect your lead sources to your CRM, database, email, and notification systems so new opportunities move immediately.",
+    };
+  }
+
+  if (id === "followup") {
+    return {
+      steps: [
+        { title: "1. Trigger Event", subtitle: "Lead action or time delay", tool: "CRM System", logo: "CRM System" },
+        { title: "2. Check Status", subtitle: "Read customer stage", tool: "Airtable", logo: "Airtable" },
+        { title: "3. Choose Message", subtitle: "Personalised next step", tool: "AI System", logo: "AI System" },
+        { title: "4. Send Follow-up", subtitle: "Email or task reminder", tool: "Gmail", logo: "Gmail" },
+        { title: "5. Log Activity", subtitle: "Track response and outcome", tool: "n8n", logo: "n8n" },
+      ],
+      tools: ["CRM System", "Airtable", "AI System", "Gmail", "n8n", "Make", "Zapier"],
+      benefits: [
+        { title: "Consistent Follow-up", text: "Customers receive timely messages without manual chasing.", icon: Bell },
+        { title: "Personalised Timing", text: "Messages can change based on stage, priority, or behaviour.", icon: Users },
+        { title: "Less Repetition", text: "Teams do not need to remember every reminder manually.", icon: Clock },
+        { title: "Activity History", text: "Each follow-up can be logged for visibility.", icon: FileText },
+      ],
+      how: "We automate follow-up sequences based on customer actions, timing, CRM stage, and business rules.",
+    };
+  }
+
+  if (id === "task-routing") {
+    return {
+      steps: [
+        { title: "1. Request Arrives", subtitle: "Email, form, ticket, or chat", tool: "Gmail", logo: "Gmail" },
+        { title: "2. Read Context", subtitle: "Identify category and priority", tool: "AI System", logo: "AI System" },
+        { title: "3. Apply Rules", subtitle: "Choose owner or queue", tool: "n8n", logo: "n8n" },
+        { title: "4. Assign Task", subtitle: "Route to the right person", tool: "CRM System", logo: "CRM System" },
+        { title: "5. Notify Owner", subtitle: "Send alert and next step", tool: "Alert System", logo: "Alert System" },
+      ],
+      tools: ["Gmail", "AI System", "n8n", "CRM System", "Alert System", "Airtable", "Notion"],
+      benefits: [
+        { title: "Clear Ownership", text: "Every request gets assigned instead of sitting unattended.", icon: Users },
+        { title: "Faster Routing", text: "Rules move work to the right person immediately.", icon: Route },
+        { title: "Less Confusion", text: "Teams know who owns what and what happens next.", icon: Workflow },
+        { title: "Better Prioritisation", text: "Urgent work can be detected and escalated faster.", icon: ShieldCheck },
+      ],
+      how: "We build routing rules that classify incoming work and send it to the right owner, queue, or workflow automatically.",
+    };
+  }
+
+  if (id === "ticket-workflow") {
+    return {
+      steps: [
+        { title: "1. Ticket Created", subtitle: "Customer issue captured", tool: "Support Desk", logo: "" },
+        { title: "2. Categorise", subtitle: "Classify issue type", tool: "AI System", logo: "AI System" },
+        { title: "3. Escalate", subtitle: "Apply SLA and priority", tool: "n8n", logo: "n8n" },
+        { title: "4. Update Status", subtitle: "Track progress", tool: "Airtable", logo: "Airtable" },
+        { title: "5. Notify Customer", subtitle: "Send resolution update", tool: "Gmail", logo: "Gmail" },
+      ],
+      tools: ["AI System", "n8n", "Airtable", "Gmail", "Alert System", "CRM System"],
+      benefits: [
+        { title: "Faster Support", text: "Tickets move through the right process without manual sorting.", icon: Headphones },
+        { title: "Better Escalation", text: "High-priority issues can be routed before they become bigger problems.", icon: ShieldCheck },
+        { title: "Status Visibility", text: "Teams can see what is open, pending, or resolved.", icon: BarChart3 },
+        { title: "Cleaner Communication", text: "Customers and teams receive consistent updates.", icon: Bell },
+      ],
+      how: "We automate ticket intake, categorisation, escalation, status updates, and notifications so support work moves predictably.",
+    };
+  }
+
+  if (id === "bpa") {
+    return {
+      steps: [
+        { title: "1. Map Process", subtitle: "Document current workflow", tool: "Notion", logo: "Notion" },
+        { title: "2. Find Bottleneck", subtitle: "Identify wasted steps", tool: "Workflow Map", logo: "" },
+        { title: "3. Redesign Flow", subtitle: "Simplify the process", tool: "AI System", logo: "AI System" },
+        { title: "4. Automate Steps", subtitle: "Build repeatable workflows", tool: "n8n", logo: "n8n" },
+        { title: "5. Measure Impact", subtitle: "Track before and after", tool: "Dashboard", logo: "" },
+      ],
+      tools: ["Notion", "AI System", "n8n", "Airtable", "Make", "Zapier", "Dashboard"],
+      benefits: [
+        { title: "Removes Bottlenecks", text: "Slow manual steps are redesigned into cleaner workflows.", icon: Workflow },
+        { title: "Improves Experience", text: "The process becomes easier for customers and internal teams.", icon: LayoutDashboard },
+        { title: "Saves Time", text: "Repeated admin work is reduced or automated.", icon: Clock },
+        { title: "Measurable Change", text: "You can track what improved after automation.", icon: BarChart3 },
+      ],
+      how: "We analyse the process, redesign the weak points, automate the repeatable steps, and measure the operational improvement.",
+    };
+  }
+
+  if (id === "reporting") {
+    return {
+      steps: [
+        { title: "1. Collect Data", subtitle: "Pull from tools and records", tool: "Airtable", logo: "Airtable" },
+        { title: "2. Clean Metrics", subtitle: "Format and validate values", tool: "n8n", logo: "n8n" },
+        { title: "3. Build Dashboard", subtitle: "Visualise KPIs", tool: "Grafana", logo: "Grafana" },
+        { title: "4. Send Report", subtitle: "Scheduled summary", tool: "Gmail", logo: "Gmail" },
+        { title: "5. Alert Changes", subtitle: "Notify when metrics shift", tool: "Alert System", logo: "Alert System" },
+      ],
+      tools: ["Airtable", "n8n", "Grafana", "Gmail", "Alert System", "Google Sheets", "Dashboard"],
+      benefits: [
+        { title: "Better Decisions", text: "Important numbers become visible without manual reporting.", icon: TrendingUp },
+        { title: "Less Spreadsheet Work", text: "Reports are generated automatically from live data.", icon: Database },
+        { title: "Faster Visibility", text: "Teams see changes earlier and can respond quicker.", icon: Bell },
+        { title: "Clear KPIs", text: "Dashboards show what matters instead of scattered data.", icon: BarChart3 },
+      ],
+      how: "We connect your business data sources, clean the numbers, build dashboards, and automate reports or alerts.",
     };
   }
 
   return {
     steps: [
-      { title: "1. Lead Capture", subtitle: "Web form / chat / ads", tool: "Airtable", logo: "Airtable" },
-      { title: "2. Create Contact", subtitle: "Store or update CRM", tool: "HubSpot", logo: "HubSpot" },
-      { title: "3. Assign Owner", subtitle: "Round robin / rules", tool: "CRM System", logo: "CRM System" },
-      { title: "4. Follow-up", subtitle: "Email or task", tool: "Gmail", logo: "Gmail" },
-      { title: "5. Notify Team", subtitle: "Slack / email alert", tool: "Alert System", logo: "Alert System" },
+      { title: "1. Understand Need", subtitle: "Review the workflow", tool: "Discovery", logo: "" },
+      { title: "2. Design System", subtitle: "Map the best solution", tool: "Workflow", logo: "" },
+      { title: "3. Connect Tools", subtitle: "Integrate your stack", tool: "n8n", logo: "n8n" },
+      { title: "4. Automate Work", subtitle: "Remove manual steps", tool: "AI System", logo: "AI System" },
+      { title: "5. Track Outcome", subtitle: "Measure the result", tool: "Dashboard", logo: "" },
     ],
-    tools: ["n8n", "Zapier", "Make", "Airtable", "HubSpot", "CRM System", "Gmail", "Alert System"],
+    tools: ["n8n", "AI System", "Airtable", "Gmail", "Dashboard"],
     benefits: [
-      { title: "Saves Time", text: "Automates repetitive CRM tasks so your team can focus on real conversations.", icon: Clock },
-      { title: "Improves Follow-up", text: "No more leads slipping through the cracks with reminders and tasks.", icon: Bell },
-      { title: "Better Visibility", text: "Every interaction is tracked so you always know what is happening.", icon: BarChart3 },
-      { title: "Scales With You", text: "Your CRM keeps running smoothly as your business grows.", icon: Users },
+      { title: "Saves Time", text: "The workflow becomes easier to run.", icon: Clock },
+      { title: "Reduces Errors", text: "Automation reduces manual copying and missed steps.", icon: ShieldCheck },
+      { title: "Improves Visibility", text: "You can track what happens across the process.", icon: BarChart3 },
+      { title: "Scales With You", text: "The system can grow with the business.", icon: Users },
     ],
-    how: "We connect your forms, CRM, email, and team notifications so leads move forward without manual copying or chasing.",
+    how: "We design and connect the right workflow for your operational need.",
   };
 }
-
 export default function ServiceModal({ service, onClose }: { service: Service | null; onClose: () => void }) {
   if (!service) return null;
 
