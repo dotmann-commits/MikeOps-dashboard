@@ -17,7 +17,7 @@ export function askMikeOpsAIAboutService(service: MikeOpsAIContext) {
   const message = `MIKEOPS_SERVICE_CARD_CONTEXT\n\nService: ${serviceTitle}\n\nContext: ${serviceDescription}\n\nExplain this MikeOps service in simple business language. Give one practical example. Ask one relevant follow-up question.`;
 
   const startChat = (attempt = 1) => {
-    const chat = (window as any).voiceflow?.chat;
+    const chat = window.voiceflow?.chat;
 
     if (!chat) {
       if (attempt < 10) setTimeout(() => startChat(attempt + 1), 500);

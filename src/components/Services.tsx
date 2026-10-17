@@ -6,13 +6,14 @@ Mail,
 GitBranch,
 Ticket,
 Zap,
-BarChart2
+BarChart2,
+type LucideIcon
 } from "lucide-react";
 
 import {services} from "../data/mockData";
 import ServiceModal from "./ServiceModal";
 
-const iconMap:any={
+const iconMap: Record<string, LucideIcon> = {
 Settings,
 UserPlus,
 Mail,
